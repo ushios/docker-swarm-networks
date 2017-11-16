@@ -19,7 +19,8 @@ func main() {
 	name = os.Getenv("HOSTNAME")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		log.Println(name)
+		v := r.URL.Query()
+		log.Printf("server(%s) client(%s)\n", name, v.Get("c"))
 		fmt.Fprintf(w, name)
 	})
 

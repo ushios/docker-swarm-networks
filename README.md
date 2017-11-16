@@ -13,4 +13,5 @@ $ docker service logs -f swarm_network_server
 
 ```console
 $ docker stack rm swarm_network
+$ docker swarm leave -f
 ```

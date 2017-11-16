@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -12,7 +14,7 @@ func main() {
 	for {
 		select {
 		case <-t.C:
-			_, err := c.Get("http://server:8080")
+			_, err := c.Get(fmt.Sprintf("http://server:8080?c=%s", os.Getenv("HOSTNAME")))
 			if err != nil {
 				log.Println(err)
 			}
